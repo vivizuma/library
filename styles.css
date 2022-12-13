@@ -1,0 +1,412 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* CSS RESET */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* css reset end*/
+
+/* CSS VARIABLES & FONTS */
+:root {
+  --shadow-gray: #eaecf1;
+  --light-gray: #eeeeee;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #eeeeee;
+}
+* {
+  box-sizing: border-box;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 48;
+}
+/* MAIN */
+.main {
+  width: 100vw;
+  position: relative;
+  min-height: 100vh;
+  border: 2px solid blue;
+  display: grid;
+  grid-template: 0.1fr 0.1fr 1fr 0.075fr / 1fr;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  grid-row: 1/1;
+  grid-column: 1/1;
+  border-bottom: 3px solid #eaecf1;
+  height: clamp(100px, 100px, 150px);
+}
+.title {
+  font-size: 2.25rem;
+}
+.add-book-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(100px, 100px, 100px);
+}
+.add-btn {
+  background: #ffffff;
+
+  min-width: 100%;
+
+  border: 0;
+  color: rgb(0, 0, 0);
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.1s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  min-width: 10%;
+}
+.add-btn:hover {
+  background: white;
+
+  border: 1px solid rgba(0, 0, 0, 0.695);
+}
+.add-btn:active {
+  background-color: var(--light-gray);
+}
+.card-container-wrap {
+  display: grid;
+  grid-template: 0.5fr 1fr 0.5fr /1fr;
+}
+
+.card-container {
+  color: black;
+  background-color: #eeeeee;
+
+  grid-row: 3/4;
+  grid-column: 1/1;
+  display: grid;
+  grid-template: 1fr / 0.2fr 1fr 0.2fr;
+  gap: 10px;
+}
+.cards {
+  grid-row: 1/1;
+  grid-column: 2/3;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(225px, 1fr));
+  gap: clamp(15px, 30px, 30px);
+  padding-bottom: 2.5rem;
+}
+.book-card {
+  padding: 15px;
+  height: clamp(150px, 200px, 200px);
+  width: clamp(150px, 200px, 1fr);
+  background-color: #ffffff;
+  box-shadow: 1px 2px 1px #0000000f;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.book-card:hover {
+  transition: 250ms;
+  box-shadow: 1px 2px 1px #00000035;
+}
+
+/* FOOTER */
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-top: 1px solid #eeeeee;
+}
+
+.footer p {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* button */
+.button-62 {
+  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
+  border: 0;
+  border-radius: 12px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+}
+
+.btn-read {
+  background-color: #b9f6ca;
+  min-width: 100%;
+
+  border: 0;
+  color: rgb(0, 0, 0);
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.1s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  min-width: 100%;
+}
+.btn-read:hover {
+  background-color: #b9f6cabb;
+}
+.btn-unread {
+  min-width: 100%;
+  background-color: #ffcdd2;
+  border: 0;
+  color: rgb(0, 0, 0);
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.1s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  min-width: 100%;
+}
+.btn-unread:hover {
+  background: #ffcdd2bd;
+}
+
+.btn-delete {
+  background: var(--light-gray);
+  border: 0;
+  border-radius: 12px;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 2.5;
+  outline: transparent;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.1s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  min-width: 100%;
+}
+.btn-delete:hover {
+  background: var(--light-gray);
+  opacity: 75%;
+  color: black;
+}
+
+/* modals */
+
+.add-book-modal {
+  display: none; /*hidden by default*/
+  position: fixed; /*stay in place*/
+  z-index: 1; /*display on top */
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.435);
+}
+
+.book-form {
+  background-color: #ffffff;
+  margin: 15%;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.bold-text {
+  font-weight: 1000;
+  padding-bottom: 10px;
+}
