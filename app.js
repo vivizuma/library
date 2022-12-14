@@ -25,15 +25,20 @@ let myLibrary = [
   },
 ];
 //UI
-
-const addBookButton = document.getElementById("addBookButton");
-addBookButton.pnclick = openBookModal();
-function addBookToLibrary() {
-  //TODO
-  //submit, update myLibrary
-}
+// const closeModal = document.getElementsByClassName("close")[0];
+// closeModal.onclick = function() {
+//   modal.style.display = "none";
+// }
+// const addBookButton = document.getElementById("addBookButton");
+// addBookButton.onclick = openBookModal();
+// function addBookToLibrary() {
+//   //TODO
+//   //submit, update myLibrary
+// }
 
 function openBookModal() {
+  let modal = document.getElementById("add-book-modal");
+  modal.style.display = "block";
   //on click: render modal, create form, on submit call addBookToLibrary()
 }
 function submitBook() {}
@@ -67,19 +72,21 @@ function updateLibraryView() {
     cards.appendChild(bookCard);
 
     title.textContent = `${book.title}`;
-    title.classList.add("bold-text");
+    title.classList.add("book-title");
     author.textContent = `by ${book.author}`;
+    author.classList.add("book-author")
     pages.textContent = ` ${book.pages} pages`;
+    pages.classList.add("book-pages");
 
     //if read status = True, render a green button,
     //if read status = false, render a red button
     if (book.read === true) {
-      readBtn.classList.add("btn-read");
+      readBtn.classList.add("read");
       readBtn.innerText = "Read";
       readBtn.setAttribute("id", "readToggleOn");
     } else {
       readBtn.classList.remove("btn-read");
-      readBtn.classList.add("btn-unread");
+      readBtn.classList.add("unread");
       readBtn.innerText = "Unread";
       readBtn.setAttribute("id", "readToggleOff");
     }
@@ -105,4 +112,4 @@ function ratingSlider() {}
 
 updateLibraryView();
 
-updateLibraryView();
+
