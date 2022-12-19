@@ -77,7 +77,7 @@
           </p>
         </footer>
       </div>
-      <!-- <div class="add-book-modal" id="add-book-modal">
+      <div class="add-book-modal" id="add-book-modal">
         <div class="book-form">
           <span class="close">&times</span>
           <div class="input">
@@ -85,34 +85,47 @@
               type="text"
               class="input-field"
               value=""
-              placeholder="Title"
+              placeholder="bible"
+              id="book_title"
+              minlength="3"
               required
             />
-            <label class="input-label">Book title</label>
+            <label for="book_title" class="input-label">Book title</label>
           </div>
           <div class="input">
             <input
               type="text"
               class="input-field"
               value=""
-              placeholder="Author"
+              placeholder="GOD"
+              id="book_author"
+              minlength="3"
               required
             />
-            <label class="input-label">Author</label>
+            <label for="book_author" class="input-label">Author</label>
           </div>
           <div class="input">
             <input
-              class="text"
+              type="number"
               class="input-field"
               value=""
               placeholder="Pages"
+              id="book_pages"
+              minlength="2"
               required
             />
-            <label class="input-label">Pages</label>
+            <label for="book_pages" class="input-label">Pages</label>
+          </div>
+          <div class="input">
+            <input type="checkbox" name="Read?" id="read_status" required />
+            <label for="read_status">Read?</label>
           </div>
           <button class="submit-book" id="submit-book">SUBMIT</button>
+          <span role="alert" id="nameError" aria-hidden="true">
+            Please enter First Name
+          </span>
         </div>
-      </div> -->
+      </div>
     </div>
   </body>
 </html>

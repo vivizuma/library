@@ -1,19 +1,13 @@
+// book object constructor
+
 function BookConstructor(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    const infoVar = `"${title}, ${pages} pages, status:${read}"`;
-    console.log(infoVar);
-    return infoVar;
-  };
 }
 
-const book = new BookConstructor("The Hobbit", "J.R.R Tolkein", "295", "read");
-console.log(book.title);
-console.log(book.info());
-
+// demo library data
 let myLibrary = [
   { title: "Seveneves", author: "Neil Stephenson", pages: 872, read: false },
   { title: "Hyperion", author: "Dan Simmons", pages: 500, read: true },
@@ -24,37 +18,94 @@ let myLibrary = [
     read: true,
   },
 ];
-//UI
-// const closeModal = document.getElementsByClassName("close")[0];
-// closeModal.onclick = function() {
-//   modal.style.display = "none";
-// }
-// const addBookButton = document.getElementById("addBookButton");
-// addBookButton.onclick = openBookModal();
-// function addBookToLibrary() {
-//   //TODO
-//   //submit, update myLibrary
-// }
-
+// add book
+const addBtn = document.querySelector(".add-btn");
+addBtn.addEventListener("click", () => {
+  openBookModal();
+});
 function openBookModal() {
   let modal = document.getElementById("add-book-modal");
   modal.style.display = "block";
   //on click: render modal, create form, on submit call addBookToLibrary()
 }
-function submitBook() {}
-function closeBookModal() {}
+const closeModal = document.querySelector(".close");
+closeModal.addEventListener("click", () => {
+  closeBookModal();
+});
 
-function toggleReadStatus() {
-  const toggleBtn = document.querySelector();
+const submitBtn = document.querySelector(".submit-book");
+submitBtn.addEventListener("click", () => {
+  submitBook();
+});
+
+
+function removeBook(target) {
+  myLibrary.splice(target, 1);
+  updateLibraryView();
 }
+// when status is clicked, check if read is true, and change to false
+function toggleReadStatus(bookIndex) {
+  switch (myLibrary[bookIndex].read) {
+    case true:
+      myLibrary[bookIndex].read = false;
+      break;
+    case false:
+      myLibrary[bookIndex].read = true;
+      break;
+  }
+  updateLibraryView();
+}
+
+function submitBook() {
+  //get input values and assign to variables
+
+  let bookTitle = document.getElementById("book_title").value;
+  let bookAuthor = document.getElementById("book_author").value;
+  let bookPages = document.getElementById("book_pages").value;
+  let readStatus = document.getElementById("read_status").checked;
+  //validate user input
+  if (bookTitle.length >2 && bookAuthor.length >2){
+  //construct book
+  const book = new BookConstructor(
+    bookTitle,
+    bookAuthor,
+    bookPages,
+    readStatus
+  );
+
+  myLibrary.push(book);
+  updateLibraryView();
+  closeBookModal();
+} else {
+  console.log("invalid inputs")
+}
+}
+
+//todo: reset modal form
+function resetModalForm() {}
+function closeBookModal() {
+  let modal = document.getElementById("add-book-modal");
+  modal.style.display = "none";
+}
+//target delete button
+// const deleteKey =
+
 function updateLibraryView() {
   const cards = document.querySelector(".cards");
   cards.innerHTML = "";
+  let i = 0;
   myLibrary.forEach((book) => {
     // create card div, append as child of card container, populate card div with
     // p> for title, author, pages, read status
 
     // TODO
+    // delete btn
+    // add event listener on each delete btn. when pressed, find index
+    //of current card, search in myLibrary for index, delete parent and children of div
+
+    //read button status toggle
+    //on click, if read = true, set false, if false, set true. Switch?
+
     //erase any HTML inside of book-card div
     //create new elements for cards and assign them to variables
     const bookCard = document.createElement("div");
@@ -74,7 +125,7 @@ function updateLibraryView() {
     title.textContent = `${book.title}`;
     title.classList.add("book-title");
     author.textContent = `by ${book.author}`;
-    author.classList.add("book-author")
+    author.classList.add("book-author");
     pages.textContent = ` ${book.pages} pages`;
     pages.classList.add("book-pages");
 
@@ -83,33 +134,47 @@ function updateLibraryView() {
     if (book.read === true) {
       readBtn.classList.add("read");
       readBtn.innerText = "Read";
-      readBtn.setAttribute("id", "readToggleOn");
+      // readBtn.setAttribute("id", "readToggleOn");
     } else {
       readBtn.classList.remove("btn-read");
       readBtn.classList.add("unread");
       readBtn.innerText = "Unread";
-      readBtn.setAttribute("id", "readToggleOff");
+      // readBtn.setAttribute("id", "readToggleOff");
     }
 
     deleteBtn.innerText = "Delete";
 
-    console.log(book.title);
     cards.appendChild(bookCard);
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
     bookCard.appendChild(readBtn);
     bookCard.appendChild(deleteBtn);
+    //set index attribute for each card as "data-index"
+    readBtn.setAttribute("read-index", i);
+    bookCard.setAttribute("data-index", i);
+    deleteBtn.setAttribute("delete-index", i);
+    // use index attribute to find and target book for deletion
+    deleteBtn.addEventListener("click", () => {
+      console.log(deleteBtn.getAttribute("delete-index"));
+      let tgt = deleteBtn.getAttribute("delete-index");
+      removeBook(tgt);
+    });
+    //event listener to read status, get index and call toggleReadStatus()
+    readBtn.addEventListener("click", () => {
+      let bookStatusTgt = readBtn.getAttribute("read-index");
+      toggleReadStatus(bookStatusTgt);
+    });
 
-    //buttons  TODO REVISE
+    i++;
+    //delete button
   });
 
   // the array as cards, style each (style as prototype?)
 }
+//remove book from library
 
 //TODO LATER @@@@@@
 function ratingSlider() {}
 
 updateLibraryView();
-
-
