@@ -38,7 +38,6 @@ submitBtn.addEventListener("click", () => {
   submitBook();
 });
 
-
 function removeBook(target) {
   myLibrary.splice(target, 1);
   updateLibraryView();
@@ -63,26 +62,45 @@ function submitBook() {
   let bookAuthor = document.getElementById("book_author").value;
   let bookPages = document.getElementById("book_pages").value;
   let readStatus = document.getElementById("read_status").checked;
+  //prepare error message
+  const errorMsg = document.getElementById("err");
   //validate user input
-  if (bookTitle.length >2 && bookAuthor.length >2){
-  //construct book
-  const book = new BookConstructor(
-    bookTitle,
-    bookAuthor,
-    bookPages,
-    readStatus
-  );
+  if (bookTitle.length > 2 && bookAuthor.length > 2) {
+    //construct book
+    const book = new BookConstructor(
+      bookTitle,
+      bookAuthor,
+      bookPages,
+      readStatus
+    );
 
-  myLibrary.push(book);
-  updateLibraryView();
-  closeBookModal();
-} else {
-  console.log("invalid inputs")
-}
+    myLibrary.push(book);
+    updateLibraryView();
+    resetModalForm();
+    closeBookModal();
+    errorMsg.classList.remove("error-active");
+    errorMsg.classList.add("error-hidden");
+  } else {
+    console.log("invalid inputs");
+
+    errorMsg.classList.remove("error-hidden");
+    errorMsg.classList.add("error-active");
+  }
 }
 
 //todo: reset modal form
-function resetModalForm() {}
+function resetModalForm() {
+  // get inner text of form
+  const titleField = document.getElementById("book_title");
+  const authorField = document.getElementById("book_author");
+  const pageField = document.getElementById("book_pages");
+  const readCheckbox = document.getElementById("read_status");
+
+  titleField.value = "";
+  authorField.value = "";
+  pageField.value = "";
+  readCheckbox.checked = "";
+}
 function closeBookModal() {
   let modal = document.getElementById("add-book-modal");
   modal.style.display = "none";

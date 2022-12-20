@@ -120,10 +120,16 @@
             <input type="checkbox" name="Read?" id="read_status" required />
             <label for="read_status">Read?</label>
           </div>
+          <div class="error-hidden" id="err">
+            <div class="error-icon"></div>
+            <span class="material-symbols-outlined">
+              error
+              </span>
+            <div class="error-text">Oops! Title and Author must have at least 3 characters</div>
+           </div>
+          
           <button class="submit-book" id="submit-book">SUBMIT</button>
-          <span role="alert" id="nameError" aria-hidden="true">
-            Please enter First Name
-          </span>
+        
         </div>
       </div>
     </div>

@@ -561,3 +561,15 @@ input:valid {
 #nameError.visible {
   display: block;
 }
+
+.error-active {
+  display:block;
+  height:100px;
+  width:100%;
+  background-color:var(--yellow-vivid-050);
+  color:var(--yellow-vivid-800)
+}
+
+.error-hidden{
+  display:none
+}
