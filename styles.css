@@ -306,6 +306,7 @@ body {
 .book-title {
   font-weight: bold;
   color: var(--blue-grey-900);
+
 }
 .book-author {
   color: var(--blue-grey-700);
@@ -512,6 +513,7 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  border-radius:20px;
 
   padding: 2rem 1rem 0;
 }
@@ -530,6 +532,7 @@ body {
   font: inherit;
   font-size: 1.125rem;
   padding: 0.25rem 0;
+  margin:0.5rem
 }
 input:invalid {
   border-color:var(--red-vivid-300);
@@ -542,7 +545,7 @@ input:valid {
 }
 
 .close {
-  color: var(--blue-grey-900);
+  color: var(--blue-grey-800);
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -572,4 +575,28 @@ input:valid {
 
 .error-hidden{
   display:none
+}
+#read_status:checked {
+  height:20px;
+  font-size:28px;
+  background-color: var(--teal-vivid-200);
+  color:green
+}
+
+#read_status {
+  height:20px;
+  font-size:28px;
+  background-color:red
+}
+.submit-book {
+  text-align:center;
+  border:none;
+  padding:5px;
+  background-color: var(--purple-700);
+  align-self:center;
+  border-radius:5px;
+  padding:15px;
+  color:var(--purple-050);
+  font-weight:700;
+  margin:10px
 }
