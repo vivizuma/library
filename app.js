@@ -42,7 +42,7 @@ function removeBook(target) {
   myLibrary.splice(target, 1);
   updateLibraryView();
 }
-// when status is clicked, check if read is true, and change to false
+
 function toggleReadStatus(bookIndex) {
   switch (myLibrary[bookIndex].read) {
     case true:
@@ -56,17 +56,17 @@ function toggleReadStatus(bookIndex) {
 }
 
 function submitBook() {
-  //get input values and assign to variables
+ 
 
   let bookTitle = document.getElementById("book_title").value;
   let bookAuthor = document.getElementById("book_author").value;
   let bookPages = document.getElementById("book_pages").value;
   let readStatus = document.getElementById("read_status").checked;
-  //prepare error message
+
   const errorMsg = document.getElementById("err");
-  //validate user input
+
   if (bookTitle.length > 2 && bookAuthor.length > 2) {
-    //construct book
+ 
     const book = new BookConstructor(
       bookTitle,
       bookAuthor,
@@ -88,7 +88,6 @@ function submitBook() {
   }
 }
 
-//todo: reset modal form
 function resetModalForm() {
   // get inner text of form
   const titleField = document.getElementById("book_title");
@@ -107,7 +106,11 @@ function closeBookModal() {
 }
 //target delete button
 // const deleteKey =
-
+const db = {
+ getBooks: ()=>{
+  
+ }
+}
 function updateLibraryView() {
   const cards = document.querySelector(".cards");
   cards.innerHTML = "";

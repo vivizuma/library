@@ -208,7 +208,6 @@ body {
   width: 100vw;
   position: relative;
   min-height: 100vh;
-  border: 2px solid blue;
   display: grid;
   grid-template: 0.1fr 0.1fr 1fr 0.075fr / 1fr;
 }
@@ -237,7 +236,6 @@ body {
   color: white;
   min-width: 100%;
 
-  border: 0;
 
   border-radius: 12px;
   cursor: pointer;
@@ -251,7 +249,7 @@ body {
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow 0.1s ease-in-out;
+  transition: box-shadow 0.02s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -300,7 +298,7 @@ body {
   justify-content: space-evenly;
 }
 .book-card:hover {
-  transition: 250ms;
+  transition: 0.02s;
   box-shadow: 1px 2px 1px #00000035;
 }
 .book-title {
