@@ -12,8 +12,8 @@ Future features:
   //data
 - local storage & database options
 
-[ ] -
-[ ] -
+[ ] - add book to local storage
+[ ] - remove book from local storage
 [ ] -
 [ ] -
 [ ] -

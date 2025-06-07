@@ -57,7 +57,6 @@ function toggleReadStatus(bookIndex) {
 
 function submitBook() {
  
-
   let bookTitle = document.getElementById("book_title").value;
   let bookAuthor = document.getElementById("book_author").value;
   let bookPages = document.getElementById("book_pages").value;
@@ -116,19 +115,7 @@ function updateLibraryView() {
   cards.innerHTML = "";
   let i = 0;
   myLibrary.forEach((book) => {
-    // create card div, append as child of card container, populate card div with
-    // p> for title, author, pages, read status
 
-    // TODO
-    // delete btn
-    // add event listener on each delete btn. when pressed, find index
-    //of current card, search in myLibrary for index, delete parent and children of div
-
-    //read button status toggle
-    //on click, if read = true, set false, if false, set true. Switch?
-
-    //erase any HTML inside of book-card div
-    //create new elements for cards and assign them to variables
     const bookCard = document.createElement("div");
     const title = document.createElement("p");
     const author = document.createElement("p");
@@ -136,11 +123,10 @@ function updateLibraryView() {
     const readBtn = document.createElement("button");
     const deleteBtn = document.createElement("button");
     //TODO READ or UNREAD BUTTON
-    //add classnames to variables for styling
+
     bookCard.classList.add("book-card");
     deleteBtn.classList.add("btn-delete");
 
-    //append new elements to desired area of DOM hierarchy
     cards.appendChild(bookCard);
 
     title.textContent = `${book.title}`;
@@ -150,18 +136,16 @@ function updateLibraryView() {
     pages.textContent = ` ${book.pages} pages`;
     pages.classList.add("book-pages");
 
-    //if read status = True, render a green button,
-    //if read status = false, render a red button
+// isRead status
     if (book.read === true) {
       readBtn.classList.add("read");
       readBtn.innerText = "Read";
-      // readBtn.setAttribute("id", "readToggleOn");
+     
     } else {
       readBtn.classList.remove("btn-read");
       readBtn.classList.add("unread");
       readBtn.innerText = "Unread";
-      // readBtn.setAttribute("id", "readToggleOff");
-    }
+   }
 
     deleteBtn.innerText = "Delete";
 
@@ -197,5 +181,22 @@ function updateLibraryView() {
 
 //TODO LATER @@@@@@
 function ratingSlider() {}
+function initDb(){
+  // if localstorage, get books and store in state
+  const value = localStorage.getItem("books")
+  if(value=== null){
+    console.log("there is no db atm")
+      
+  }
+  else{
+localStorage.setItem("books", JSON.stringify(myLibrary))
+  console.log(JSON.parse(localStorage.getItem("books")))
+  } 
+}
 
+const init = () => {
+initDb()
 updateLibraryView();
+}
+
+init()
