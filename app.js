@@ -39,7 +39,8 @@ submitBtn.addEventListener("click", () => {
 });
 
 function removeBook(target) {
-  myLibrary.splice(target, 1);
+  myLibrary.splice(target, 1)
+  saveDb()
   updateLibraryView();
 }
 
@@ -52,6 +53,7 @@ function toggleReadStatus(bookIndex) {
       myLibrary[bookIndex].read = true;
       break;
   }
+  saveDb()
   updateLibraryView();
 }
 
@@ -74,6 +76,7 @@ function submitBook() {
     );
 
     myLibrary.push(book);
+    saveDb()
     updateLibraryView();
     resetModalForm();
     closeBookModal();
@@ -85,6 +88,7 @@ function submitBook() {
     errorMsg.classList.remove("error-hidden");
     errorMsg.classList.add("error-active");
   }
+  saveDb()
 }
 
 function resetModalForm() {
@@ -181,21 +185,70 @@ function updateLibraryView() {
 
 //TODO LATER @@@@@@
 function ratingSlider() {}
-function initDb(){
+function syncDb(){
   // if localstorage, get books and store in state
   const value = localStorage.getItem("books")
   if(value=== null){
+
     console.log("there is no db atm")
+    
       
   }
   else{
-localStorage.setItem("books", JSON.stringify(myLibrary))
+  localStorage.setItem("books", "")
+  localStorage.setItem("books", JSON.stringify(myLibrary))
   console.log(JSON.parse(localStorage.getItem("books")))
+
+  
   } 
 }
 
+// when do we need to update the database? 
+// 1. when users add a book
+// 2. when users edit a book
+// 3. when users delete a book
+
+
+// or we run a reconciliation algorithm every time one of these events happen
+
+function reconcile(mem, db){
+
+}
+function isDb(){
+  if(localStorage.getItem("books") === null){
+    console.log("db is empty")
+    return false
+    
+  }
+  return true
+}
+function saveDb(){
+  const myLibraryCopy = [...myLibrary]
+  localStorage.setItem("books", "")
+  localStorage.setItem("books", JSON.stringify(myLibraryCopy))
+
+}
+function loadDb(){  
+  const books = localStorage.getItem("books")
+  if(books !== null){
+    
+  console.log("loading db .. ")
+  myLibrary = JSON.parse(localStorage.getItem("books"))
+  }
+}
 const init = () => {
-initDb()
+  if(isDb() === true){
+    loadDb()
+    console.log("db exists, loading db and awaiting changes")
+  }
+  else {
+    console.log("db does not yet exist. creating empty db entry 'books'")
+
+  }
+
+
+
+
 updateLibraryView();
 }
 
