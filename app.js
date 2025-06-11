@@ -9,14 +9,6 @@ function BookConstructor(title, author, pages, read) {
 
 // demo library data
 let myLibrary = [
-  { title: "Seveneves", author: "Neil Stephenson", pages: 872, read: false },
-  { title: "Hyperion", author: "Dan Simmons", pages: 500, read: true },
-  {
-    title: "The Death of Ivan  Illych",
-    author: "Leo Tolstoy",
-    pages: 68,
-    read: true,
-  },
 ];
 // add book
 const addBtn = document.querySelector(".add-btn");
