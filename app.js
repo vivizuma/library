@@ -1,13 +1,14 @@
 // book object constructor
 
-function BookConstructor(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book{
+  constructor(title, author, pages, read){
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
-
-// demo library data
+// library storage in state 
 let myLibrary = [
 ];
 // add book
@@ -60,7 +61,7 @@ function submitBook() {
 
   if (bookTitle.length > 2 && bookAuthor.length > 2) {
  
-    const book = new BookConstructor(
+    const book = new Book(
       bookTitle,
       bookAuthor,
       bookPages,
@@ -99,13 +100,7 @@ function closeBookModal() {
   let modal = document.getElementById("add-book-modal");
   modal.style.display = "none";
 }
-//target delete button
-// const deleteKey =
-const db = {
- getBooks: ()=>{
   
- }
-}
 function updateLibraryView() {
   const cards = document.querySelector(".cards");
   cards.innerHTML = "";
@@ -168,44 +163,13 @@ function updateLibraryView() {
     });
 
     i++;
-    //delete button
   });
 
-  // the array as cards, style each (style as prototype?)
 }
-//remove book from library
 
 //TODO LATER @@@@@@
 function ratingSlider() {}
-function syncDb(){
-  // if localstorage, get books and store in state
-  const value = localStorage.getItem("books")
-  if(value=== null){
 
-    console.log("there is no db atm")
-    
-      
-  }
-  else{
-  localStorage.setItem("books", "")
-  localStorage.setItem("books", JSON.stringify(myLibrary))
-  console.log(JSON.parse(localStorage.getItem("books")))
-
-  
-  } 
-}
-
-// when do we need to update the database? 
-// 1. when users add a book
-// 2. when users edit a book
-// 3. when users delete a book
-
-
-// or we run a reconciliation algorithm every time one of these events happen
-
-function reconcile(mem, db){
-
-}
 function isDb(){
   if(localStorage.getItem("books") === null){
     console.log("db is empty")
@@ -237,9 +201,6 @@ const init = () => {
     console.log("db does not yet exist. creating empty db entry 'books'")
 
   }
-
-
-
 
 updateLibraryView();
 }
